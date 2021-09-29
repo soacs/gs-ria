@@ -1,0 +1,40 @@
+<div fxLayout="column" [style.margin-top]="'50px'">
+  <div class="placeholder">
+    <ng-container *ngIf="testNewsAPIData && testNewsAPIData.length > 0">
+      <p class="breaking-news-title" aria-label="Breaking news">Breaking News</p>
+      <ng-container *ngFor="let breakingNewsItem of testNewsAPIData">
+        <div
+          fxLayout="row"
+          fxLayoutGap="20px"
+          fxLayout.sm="column wrap"
+          fxLayoutAlign="space-around stretch"
+          fxLayout.xs="column"
+        >
+          <div fxLayout="row" fxLayout.xs="column" fxFlexAlign="center" fxFlex="100" fxLayoutGap="20px">
+            <p
+              ngClass="breaking-news-item-title"
+              [ngClass.xs]="{ 'breaking-news-item-title': false, 'breaking-news-item-title-small': true }"
+              [attr.aria-label]="breakingNewsItem.title"
+            >
+              {{ breakingNewsItem.title }}
+            </p>
+            <p
+              ngClass="breaking-news-details"
+              [ngClass.xs]="{ 'breaking-news-details': false, 'breaking-news-details-small': true }"
+              [attr.aria-label]="breakingNewsItem.articletext"
+            >
+              {{ breakingNewsItem.articletext }} <br /><br />
+              <button mat-raised-button color="primary" [attr.aria-label]="'Read more' + breakingNewsItem.arialabel">
+                Read more</button
+              >&nbsp;
+              <button mat-raised-button color="primary" [attr.aria-label]="'Share story' + breakingNewsItem.arialabel">
+                Share story
+              </button>
+              <br /><br />
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

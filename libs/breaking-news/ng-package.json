@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/breaking-news",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@shared/aws-integration": "@shared/aws-integration",
+      "@shared/material": "@shared/material"
+    }
+  }
+}
