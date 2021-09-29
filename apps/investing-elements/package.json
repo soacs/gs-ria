@@ -1,0 +1,13 @@
+{
+  "name": "@ria/investing-elements",
+  "version": "1.0.0",
+  "description": "- This app defines/registers custom elements for components exported from **@shared/investing** library",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "investing-elements.js"
+  ]
+}
