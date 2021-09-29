@@ -1,0 +1,8 @@
+<div *ngIf="headerConfig$ | async as headerConfig">
+  <div *ngFor="let menuItem of headerConfig[0]?.menu_items">
+    <a mat-list-item [routerLink]="menuItem?.menu_item?.route" (click)="itemSelected()">
+      <mat-icon class="icon">{{ menuItem?.menu_item?.icon }}</mat-icon>
+      <span class="label">{{ menuItem?.menu_item?.text }}</span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div fxFlex fxLayout *ngIf="headerConfig">
+  <a routerLink="/">
+    <img [src]="headerConfig.logo.url" alt="" />
+  </a>
+  <span class="title">{{ headerConfig.title }}</span>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap="20px" fxHide.xs fxHide.sm>
+    <div *ngFor="let menuItem of headerConfig?.menu_items">
+      <div fxFlex fxLayoutAlign="center center">
+        <mat-icon class="icon">{{ menuItem?.menu_item?.icon }}</mat-icon>
+        <span class="label" [routerLink]="menuItem?.menu_item?.route">{{ menuItem?.menu_item?.text }}</span>
+      </div>
+    </div>
+  </div>
+</div>

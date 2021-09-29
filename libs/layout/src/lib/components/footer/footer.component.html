@@ -1,0 +1,30 @@
+<div class="footer" *ngIf="footerConfig">
+  <div fxLayout="row" fxLayoutGap="10px">
+    <div fxLayout="column" fxFlex="10">
+      <div class="logo">
+        <a routerLink="/">
+          <img [src]="footerConfig?.logo.url" alt="Footer logo" />
+        </a>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="90">
+      <div fxLayout="row" fxLayoutGap="20px">
+        <ul>
+          <li class="links" *ngFor="let link of footerConfig?.footerlinks">
+            <a class="links" [href]="link.href">{{ link.title }}</a>
+          </li>
+          <li>
+            <a class="links" [href]="footerConfig?.policy[0].url" target="_blank">{{
+              footerConfig?.policy[0].Key.split('.').slice(0, -1).join('.') | titlecase
+            }}</a>
+          </li>
+        </ul>
+      </div>
+      <div fxLayout="row">
+        <div class="disclaimer">
+          {{ footerConfig?.disclaimer }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
