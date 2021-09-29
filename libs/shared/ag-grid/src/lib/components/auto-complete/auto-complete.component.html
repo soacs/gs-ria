@@ -1,0 +1,22 @@
+<input
+  #typeAheadInput
+  [value]="finalCellValue"
+  (keyup)="onKeyup($event)"
+  (paste)="onPaste($event)"
+  type="text"
+  [placeholder]="typeAheadInputPlaceholder"
+  [matAutocomplete]="auto"
+  style="font-weight: 400; font-size: 12px"
+  [style.height]="cellEditorParams.eGridCell.clientHeight + 'px'"
+  [style.width]="cellEditorParams.column['actualWidth'] * 1.2 + 'px'"
+/>
+<mat-autocomplete (optionSelected)="onOptionSelected($event)" [autoActiveFirstOption]="autoActiveFirstOption" #auto="matAutocomplete">
+  <ng-template [ngIf]="filteredRecords$ | async" let-records>
+    <cdk-virtual-scroll-viewport class="autocomplete-test-viewport" itemSize="10"
+      [ngStyle]="{'height': (cellEditorParams.eGridCell.clientHeight * (records.length > 10 ? 10 : records.length+1)) + 'px'}">
+      <mat-option [style.height]="cellEditorParams.eGridCell.clientHeight + 'px'" *cdkVirtualFor="let record of records" [value]="record">
+        {{ record }}
+      </mat-option>
+    </cdk-virtual-scroll-viewport>
+  </ng-template>
+</mat-autocomplete>
