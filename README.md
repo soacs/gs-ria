@@ -1,210 +1,187 @@
-# Ria
 
-This project was generated using [Nx](https://nx.dev).
+# Trading Center 2.0
+> This project is a new generation of Angular 11 Trading Center for Folio Institutional.
+> Live demo [_here_](https://folioinstitutional.dapaws.foliofn.com/servlets/ProcessAction/itc/main). <!-- If you have the project hosted somewhere, include the link here. -->
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+<!-- * [License](#license) -->
 
-## What should in a Application level (Driver/Host)
+## General Information
+- Trading Center 2.0
+- Provides a new generation of a trading center for Folio Institutional.
+- Added fixed income, equities, options etc.
+- New Allocation and Trade Blotter
 
-    Interceptors
-    	Auto populate http header
-    	Error Handling
-    	Logging
-    State Management -
-    	Root level state - userProfile, dashBoard
+## Technologies Used
+- NX Workspace 11
+- Angular 11
+- Material Design 11
+- GSToolkit 11
 
-, Feature level state can be in library associated with it,
-Ex: Questionaire library can have the questionnaire
-Event emitters (broadcast pattern etc)
-Routing aspects (Resolvers), Route init, lazy loaded.
-DOM management (Angular philosophy is against managing DOM directly) Ex: Draggable.
+## Features
+- Allocation Blotter
+- Allocation Detail Screen
+- Trade Blotter
 
-## What should be in a library
+## Setup
 
-Any functionality or feature that could be of value add for sharing among several applications.
+1)	Install node 12  -  https://nodejs.org/en/download/
+2)	Install @nrwl/cli – command: npm I -g @nrwl/cli@11.0.3
+3)	Node -v
+4)	Git clone ssh://git@stash.foliofn.com:7999/ang/gs-ria.git
+5)	Cd gs-ria
+6)	README
+7)	Npm install
+8)	Nx serve trading
+9)	Nx lint trading –with-deps –silent
+10)	Nx test trading –with-deps –silent
+11)	See https://Nx.dev – watch video https://nx.dev/latest/angular/getting-started/intro
 
-Ex: If a component should leverage Content Stack APIs this component should go into a library.
+## Plugins
 
-## Adding capabilities to your workspace
+1)	nx list
+2)	ng add @nrwl/angular
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Usage
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### Generate an application
 
-Below are our core plugins:
+> nx g @nrwl/angular:app my-app`--dryRun
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+> nx g @nrwl/angular:app etfs --dryRun
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+> nx g @nrwl/angular:lib etfs --importPath='@trading/etfs' --add-module-spec --dryRun
 
-## Generate an application
+### Generate a library
 
-Run `nx g @nrwl/angular:app my-app` to generate an application.
+> nx g @nrwl/angular:lib my-lib` to generate a library.
+> nx g @nrwl/angular:lib util --importPath='@ria/trading/util' --add-module-spec --dryRun
 
-> You can use any of the plugins above to generate applications as well.
+### Generate a component
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+> nx g component my-component --project=my-app --dryRun
 
-## Generate a library
+### Generate a service
 
-Run `nx g @nrwl/angular:lib my-lib` to generate a library.
+> nx g service services/mappings --project=trading --dryRun
 
-> You can also use any of the plugins above to generate libraries as well.
+### Development server
 
-Libraries are sharable across libraries and applications. They can be imported from `@ria/mylib`.
+> nx serve trading
 
-## Generate a service
+Navigate to http://localhost:4200/.
+The app will automatically reload if you change any of the source files.
 
-with the project tag indicating which project it goes into
+### Moving apps and libs
 
-## Development server
+> nx g @nrwl/workspace:move --project old-e2e new-e2e
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+> nx g @nrwl/workspace:move --project old new
 
-## Code scaffolding
+### Moving apps and libs using DDD
 
-Run `nx g component my-component --project=my-app` to generate a new component.
+Renaming fixed-income-domain
+> ng generate @nrwl/angular:move --destination=trading/domain --projectName=fixed-income-domain --importPath=@ria/trading/domain
 
-## Build
+Renaming fixed-income-feature-allocation
+> ng generate @nrwl/angular:move --destination=trading/feature-allocation --projectName=fixed-income-feature-allocation --importPath=@ria/trading/feature-allocation
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Renaming fixed-income-feature-trade-center
+> ng generate @nrwl/angular:move --destination=trading/feature-trade-center --projectName=fixed-income-feature-trade-center --importPath=@ria/trading/feature-trade-center
 
-## Linting - To run lint in all projects across workspace
+Renaming fixed-income-feature-trade-blotter
+> ng generate @nrwl/angular:move --destination=trading/feature-trade-blotter --projectName=fixed-income-feature-trade-blotter --importPath=@ria/trading/feature-trade-blotter
 
-Run nx run-many --all --target=lint --parallel
-    nx run-many --silent --all --target=test --parallel
+Renaming fixed-income-feature-trade-entry
+> ng generate @nrwl/angular:move --destination=trading/feature-trade-entry --projectName=fixed-income-feature-trade-entry --importPath=@ria/trading/feature-trade-entry
 
-remove (--parallel) switch if linting need to be run sequence
+Renaming fixed-income-feature-app-load
+> ng generate @nrwl/angular:move --destination=trading/feature-app-load --projectName=fixed-income-feature-app-load --importPath=@ria/trading/feature-app-load
 
-## Linting - To run lint in single projects
+Renaming trading-feature-trade-entry
+> ng generate @nrwl/angular:move --destination=trading/feature-order-entry --projectName=trading-feature-trade-entry --importPath=@ria/trading/feature-order-entry
 
-Run nx lint <project name>
 
-## Linting - To run lint in projects and their dependencies
+### Build
 
-Run nx lint <project name> --with-deps
-Example: nx lint trading --with-deps 
+nx build my-app`
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+nx build my-app`--prod --aot
+for a production build and ahead of compile.
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+### Linting
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+To run lint in single projects
+> nx lint trading
 
-Run `nx test my-app --code-coverage` to execute the unit tests and generate code coverage file in project root.
-## To run tests in all projects across workspace
+To run lint in single project with dependencies
+> nx lint trading --with-deps --silent
 
-Run nx run-many --all --target=test --parallel
+To run lint in all projects across workspace
+> nx run-many --all --target=lint --parallel
+> nx run-many --silent --all --target=test --parallel
+
+To run lint in all projects across workspace in sequence
+> nx run-many --all --target=lint
+
+### Running unit tests
+
+`nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+
+`nx affected:test` to execute the unit tests affected by a change.
+
+`nx test my-app --code-coverage` to execute the unit tests and generate code coverage file in project root.
+
+### To run tests in all projects across workspace
+
+> nx run-many --all --target=test --parallel
 
 remove (--parallel) switch if tests need to be run sequence
 
-## Running test in projects with their dependencies
+### Running test in projects with their dependencies
 
-Run nx test <project name> --with-deps
-Example: nx test trading --with-deps
+> nx test <project name> --with-deps
 
-## Running end-to-end tests
+Example:
+> nx test trading --with-deps
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+### Running end-to-end tests
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+`ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+`nx affected:e2e` to execute the end-to-end tests affected by a change.
 
-## Code Coverage
-Run `nx run-many --all --target=test --parallel --code-coverage` to see a code coverage dashboard of your projects.
-## Understand your workspace
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+### Code Coverage
+`nx run-many --all --target=test --parallel --code-coverage` to see a code coverage dashboard of your projects.
 
-## Further help
+### Understand your workspace
 
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+`nx dep-graph`
+to see a diagram of the dependencies of your projects.
 
-## NX way to build angular elements
+### add shared-aws-integration
 
-## Step1. Make a script in package.json
-"scripts": [{
-"input": "node_modules/document-register-element/build/document-register-element.js"
-}]
-"concat": "^1.0.3",
-"document-register-element": "^1.7.2",
-"fs-extra": "^7.0.1",
+> nx g @nrwl/angular:lib shared/aws-integration --add-module-spec --import-path=@shared/aws-integration --publishable --prefix=ria
 
-## Script2. Make a new component in libs
-nx g @nrwl/angular:lib breaking-news --publishable --importPath='@ria/breaking-news'
+> ng g service services/contentstack --project=shared-aws-integration
 
-## Step 3. Register the customized html tag in the element app’s app.module.ts
+> nx g interface aws-api-interface --directory=shared/aws-integration/interfaces --import-path=@aws-api-interface --dry-run
 
-Import that lib module Into the ria-elements app
+>nx g interface aws-api-interface --project=shared-aws-integration --dry-run
 
-const element = createCustomElement(AppComponent, { injector: this.injector })
-customElements.define("breaking-news-element", element); // each element has their own tag and component
+### Add storybook plugin and configure for a particular library
 
-## Step4. build ts components into a set of js and css
-
-nx build --prod --project ria-elements --output-hashing none
-
-## Step5. Combine the js and css files into one by making a new js file to run the scripts. (Can make an one line command like the NX doc)
-
-const fs = require('fs-extra');
-const concat = require('concat');
-
-async function build() {
-const files = [
-'dist/apps/ria-elements/runtime.js',
-'dist/apps/ria-elements/polyfills.js',
-'dist/apps/ria-elements/scripts.js',
-'dist/apps/ria-elements/main.js',
-];
-await fs.ensureDir('elements');
-await concat(files, 'elements/ria-elements-elements.js');
-await fs.copyFile('dist/apps/ria-elements/styles.css', 'elements/ria-elements-styles.css');
-};
-
-outputhashing = none;
-
-build()
-
-//node apps/ria-elements/build-element.js
-
-## ngx-build-plus way to build angular elements
-
-nx add ngx-build-plus
-nx add ngx-build-plus --project ria-elements
-nx g ngx-build-plus:wc-polyfill --project ria-elements
-nx g ngx-build-plus:externals --project ria-elements
-nx build --extra-webpack-config apps/ria-elements/webpack.externals.js --prod --project ria-elements --single-bundle
-
-Then the dist/apps/ria-elements will have all the js, css and the index.html needed.
-Add <news-widget-element></news-widget-element> to the built index.html for testing.
-start http-server in that folder: e.g. http-server -a localhost -p 8080
-or any website server hosts it
-
-## added shared-aws-integration
-
-nx g @nrwl/angular:lib shared/aws-integration --add-module-spec --import-path=@shared/aws-integration --publishable --prefix=ria
-ng g service services/contentstack --project=shared-aws-integration
-
-nx g interface aws-api-interface --directory=shared/aws-integration/interfaces --import-path=@aws-api-interface --dry-run
-nx g interface aws-api-interface --project=shared-aws-integration --dry-run
-
-## added investing
-
-nx g @nrwl/angular:lib shared/investing --add-module-spec --import-path=@shared/investing --publishable --prefix=ria --dry-run
-nx test --project=shared-investing
-
-nx generate module investing --routing --dry-run
-
-nx g component investing/components/investing --dry-run
-
-
-## Storybook Added for shared-investing library
-@nrwl/storybook plugin 
+@nrwl/storybook plugin
 https://nx.dev/latest/angular/plugins/storybook/overview
 
 Generating Storybook Configuration
@@ -225,3 +202,27 @@ Run Cypress Tests Against a Storybook Instance watch mode
 
 Run Cypress Tests Against a Storybook Instance headlessly
 > nx run shared-investing-e2e:e2e --headless
+
+### Further help
+
+Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+
+## Project Status
+Project is: _in progress_.
+
+## Room for Improvement
+
+Refactoring trading center module, appload module,
+
+Room for improvement:
+- Move Appload Module out fo fixed income domain.
+- Move Trade Center Module out fo fixed income domain.
+- Move Trade Entry and rename to Order Entry and out fo fixed income domain.
+
+## Acknowledgements
+- This project was inspired by addition of fixed income to Folio Instituional
+
+## Contact
+
+Steve Buonincontri:
+[steve@gs.com](mailto:steve@gs.com)
