@@ -1,0 +1,6 @@
+<div class="loader" *ngIf="loaderService.isLoadingValue() | async">
+  <gs-loading-overlay [visible]="true">
+    <gs-loading-icon [label]="false">
+    </gs-loading-icon>
+  </gs-loading-overlay>
+</div>
