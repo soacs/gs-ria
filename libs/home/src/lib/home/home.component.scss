@@ -1,0 +1,104 @@
+.main {
+  position: relative;
+  // display: inline-block;
+  width: 100%;
+  img {
+    height: 200px;
+    float: left;
+    padding: 10px;
+    padding-left: 0;
+  }
+  .section {
+    min-height: 200px;
+    margin: 20px 0;
+  }
+  .intro {
+    text-align: center;
+  }
+}
+.example-card {
+  max-width: 300px;
+}
+.example-card-small {
+  max-width: 275px;
+}
+
+.example-header-image {
+  background-image: url('https://www.goldmansachs.com/a/pgs/navigation/assets/images/gs-logo.svg');
+  background-size: cover;
+}
+
+.hero-image {
+  /* Sizing */
+  height: 70vh;
+
+  /* Flexbox stuff */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Text styles */
+  text-align: center;
+
+  /* Background styles */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+    url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero-text {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  // transform: translate(-50%, -50%);
+  p.title {
+    font-family: 'Vollkorn', serif !important;
+    font-size: 50px;
+    line-height: 50px;
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+  }
+  p.title-small {
+    font-size: 25px;
+    line-height: 35px;
+    width: 95%;
+    font-family: 'Vollkorn', serif !important;
+    color: white;
+    margin: 0 auto;
+  }
+}
+
+.hero-text button {
+  /* Positioning and sizing */
+  display: block;
+  width: 200px;
+
+  /* Padding and margins */
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Text styles */
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 25px;
+
+  /* Border styles */
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+}
+.card-description {
+  max-height: 100px;
+  overflow: auto;
+  float: left;
+  position: relative;
+  min-height: 100px;
+  width: 100%;
+}

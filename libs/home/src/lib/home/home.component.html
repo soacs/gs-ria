@@ -1,0 +1,75 @@
+<div fxLayoutGap="50px grid"></div>
+<div class="main" *ngIf="centerConfig">
+  <section
+    class="hero-image"
+    [ngStyle]="{ 'background-image': 'url(' + centerConfig?.intro?.background.url + ')' }"
+    aria-label="Center background image"
+  >
+    <div class="hero-text">
+      <h1 aria-label="Center title" [attr.aria-label]="centerConfig?.intro?.title">{{ centerConfig?.intro?.title }}</h1>
+      <p
+        ngClass="title"
+        [ngClass.xs]="{ title: false, 'title-small': true }"
+        [ngClass.sm]="{ title: false, 'title-small': true }"
+        [attr.aria-label]="centerConfig.intro.text"
+      >
+        {{ centerConfig.intro.text }}
+      </p>
+      <button *ngFor="let button of centerConfig?.intro?.buttons" [attr.aria-label]="button?.title">
+        {{ button?.title }}
+      </button>
+    </div>
+  </section>
+  <ria-breaking-news
+    brand="{{ brand }}"
+    *ngIf="breakingNewsFlag"
+    aria-label="Breaking news component"
+  ></ria-breaking-news>
+  <div
+    fxLayout="row"
+    fxLayoutGap="20px"
+    fxLayout.sm="column wrap"
+    fxLayoutAlign="space-around stretch"
+    fxLayout.xs="column"
+    [style.margin-top]="'50px'"
+  >
+    <div
+      fxLayout.xs="column"
+      *ngFor="let section of centerConfig?.sections"
+      fxFlexAlign="center"
+      aria-label="Example cards"
+    >
+      <mat-card
+        ngClass="example-card"
+        [ngClass.xs]="{ 'example-card': false, 'example-card-small': true }"
+        [ngClass.sm]="{ 'example-card': false, 'example-card-small': true }"
+      >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title [attr.aria-label]="section?.heading">{{ section?.heading }}</mat-card-title>
+          <mat-card-subtitle [attr.aria-label]="section?.subtitle">{{ section?.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image *ngIf="section.image && section.image.url" [src]="section?.image?.url" alt="" />
+        <mat-card-content>
+          <p class="card-description" [attr.aria-label]="section.content">
+            {{ section.content }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            *ngFor="let button of section?.buttons"
+            [attr.aria-label]="button?.title"
+          >
+            {{ button?.title }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div fxLayout="column" fxLayoutGap="50px grid">
+  <div></div>
+  <div></div>
+</div>

@@ -1,0 +1,59 @@
+
+<div
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxFlexFill
+  fxLayoutAlign="center center"
+  fxLayoutGap="20px"
+  [style.padding]="'10px'"
+  [style.margin-top]="'30px'"
+>
+  <div fxLayout="column" fxFlex="40" fxLayoutAlign="center" fxLayoutGap="30">
+    <ria-select-stocks (selectedStocks)="currentSelectedStocks($event)"></ria-select-stocks>
+  </div>
+  <button fxFlex="5" (click)="showStockChart()" mat-fab aria-label="Show Chart">
+    <mat-icon>show_chart</mat-icon>
+  </button>
+  <div fxFlex="55">
+    <ng-container *ngIf="showChart">
+      <mat-tab-group>
+        <mat-tab label="Stock Time Series Chart">
+          <ng-template matTabContent>
+            <ria-stock-time-series-chart-element
+              *axLazyElement="investingElementsURL; loadingTemplate: loading; errorTemplate: error"
+              [theme]="chartTheme$ | async"
+              [chartOptions]="stockSeriesChartOptions"
+              [chartData]="stockSeriesChartData"
+            >
+            </ria-stock-time-series-chart-element>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Holdings Chart">
+          <ng-template matTabContent>
+            <ria-holdings-pie-chart-element
+              *axLazyElement="investingElementsURL; loadingTemplate: loading; errorTemplate: error"
+              [theme]="chartTheme$ | async"
+              [chartOptions]="holdingsChartOptions"
+              [chartData]="holdingsChartData"
+              [showOpenChartButton]="true"
+            >
+            </ria-holdings-pie-chart-element>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Fixed Income Holdings Chart">
+          <ng-template matTabContent>
+            <ria-holdings-pie-chart-element
+              *axLazyElement="investingElementsURL; loadingTemplate: loading; errorTemplate: error"
+              [theme]="chartTheme$ | async"
+              [chartOptions]="fixedIncomeHoldingsChartOptions"
+              [chartData]="fixedIncomeHoldingsChartData"
+            >
+            </ria-holdings-pie-chart-element>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+      <ng-template #loading>Chart Web Component Loading...</ng-template>
+      <ng-template #error>Error Loading Chart Web Component.</ng-template>
+    </ng-container>
+  </div>
+</div>
