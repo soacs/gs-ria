@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'investing',
-  preset: '../../jest.preset.js',
+  displayName: 'shared-investing',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -11,14 +11,14 @@ module.exports = {
       }
     }
   },
-  coverageDirectory: '../../coverage/libs/investing',
+  coverageDirectory: '../../../coverage/libs/shared/investing',
   coverageThreshold: {
     global: {
-      statement: 100,
-      branches: 75,
-      lines: 85,      
-      functions: 86
-    }
+      statement: 95,
+      branches: 73,
+      lines: 95,
+      functions: 83
+   }
   },  
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',

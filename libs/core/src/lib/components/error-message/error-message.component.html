@@ -1,0 +1,12 @@
+<ng-template [ngIf]="errorMessage">
+    <gs-alert
+        size="md"
+        status="{{type}}"
+        emphasis="bold"
+        class="gs-uitk-mb-1"
+        (dismiss)="onDismiss()"
+        [dismissible]="true"
+    >
+        {{errorMessage}}
+    </gs-alert>
+</ng-template>

@@ -1,0 +1,14 @@
+<ng-template [ngIf]="chartOptionsForChart?.series?.length" [ngIfElse]="noChartOptions">
+  <highcharts-chart
+    [Highcharts]="highStock"
+    [constructorType]="'stockChart'"
+    [options]="chartOptionsForChart"
+    [oneToOne]="true"
+    [runOutsideAngular]="true"
+    style="width: 100%; height: 100%; display: block"
+  >
+  </highcharts-chart>
+</ng-template>
+<ng-template #noChartOptions>
+  <p class="error-no-data">Chart Data Not Provided</p>
+</ng-template>
