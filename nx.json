@@ -1,0 +1,102 @@
+{
+  "npmScope": "ria",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"]
+      }
+    }
+  },
+  "projects": {
+    "api": {
+      "tags": ["scope:api"]
+    },
+    "api-interfaces": {
+      "tags": ["scope:interfaces"]
+    },
+    "bonds": {
+      "tags": ["scope:bonds"]
+    },
+    "breaking-news": {
+      "tags": ["scope:breaking-news"]
+    },
+    "home": {
+      "tags": ["scope:home"]
+    },
+    "layout": {
+      "tags": ["scope:layout"]
+    },
+    "options-domain": {
+      "tags": ["domain:options", "type:domain-logic"]
+    },
+    "options-feature-orders": {
+      "tags": ["domain:options", "type:feature"]
+    },
+    "shared-ag-grid": {
+      "tags": []
+    },
+    "shared-aws-integration": {
+      "tags": ["scope:shared-aws-integration"],
+      "implicitDependencies": []
+    },
+    "shared-core": {
+      "tags": []
+    },
+    "shared-loader": {
+      "tags": []
+    },
+    "shared-material": {
+      "tags": ["scope:shared-material"]
+    },
+    "trading": {
+      "tags": ["domain:trading", "type:app"]
+    },
+    "trading-domain": {
+      "tags": ["domain:trading", "type:domain-logic"]
+    },
+    "trading-e2e": {
+      "tags": [],
+      "implicitDependencies": ["trading"]
+    },
+    "trading-feature-allocation": {
+      "tags": ["domain:trading", "type:feature"]
+    },
+    "trading-feature-app-load": {
+      "tags": ["domain:trading", "type:feature"]
+    },
+    "trading-feature-order-entry": {
+      "tags": ["domain:trading", "type:feature"]
+    },
+    "trading-feature-trade-blotter": {
+      "tags": ["domain:trading", "type:feature"]
+    },
+    "trading-feature-trade-center": {
+      "tags": ["domain:trading", "type:feature"]
+    },
+    "trading-shared-allocations": {
+      "tags": []
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  }
+}
