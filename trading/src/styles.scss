@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@ag-grid-community/core/dist/styles/ag-grid.css';
+@import '~@ag-grid-community/core/dist/styles/ag-grid';
+@import '~@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+@import '~@ag-grid-community/core/dist/styles/ag-theme-balham.css';
+@import '~@ag-grid-community/core/dist/styles/ag-theme-balham/sass/ag-theme-balham-mixin';
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@gs-ux-uitoolkit-common/side-panel/style/styles';
+@import '@gs-ux-uitoolkit-common/datepicker/style/styles';
+@import '@gs-ux-uitoolkit-common/tabs/style/styles';
+
+body {
+  margin: 0;
+}
+
+
+.ag-theme-balham-custome-theme {
+  @include ag-theme-balham((
+    foreground-color: #1C2B36,
+    header-foreground-color: #3E5463,
+    header-background-color: #F2F5F7,
+    secondary-foreground-color: #186ADE,
+    row-border-color:#9FB1BD,
+    input-focus-border-color: #186ADE,
+    ag-odd-row-bg-color: #ffffff,
+    font-family: ("Goldman Sans"),
+    font-size: 12px,
+    odd-row-background-color: #fff,
+    input-border-color: ag-derived(row-border-color),
+    row-height: ag-derived(grid-size, $times: 6, $plus: 5),
+    border-color: ag-derived(row-border-color),
+  ));
+}
+.ag-theme-balham-custome-theme .ag-rtl .ag-side-bar-left, .ag-theme-balham-custome-theme .ag-ltr .ag-side-bar-right{
+  border-left: solid 1px;
+  border-left-color: var(--ag-border-color, var(--ag-row-border-color, #C1CCD6));
+  border-right: 1px solid;
+  border-right-color: var(--ag-border-color, var(--ag-row-border-color, #C1CCD6));
+}
+.ag-theme-balham-custome-theme .ag-header-row:not(:first-child) .ag-header-cell{
+  border-top: 0px;
+}
+.ag-theme-balham-custome-theme .ag-header-cell::after, .ag-theme-balham-custome-theme .ag-header-group-cell::after{
+  height: 100%;
+  top: 0px;
+}
+.ag-theme-balham .ag-root-wrapper{
+  border: none!important;
+}
+.ag-theme-balham{
+  font-family: "Goldman Sans";
+}
+.ag-theme-balham-custome-theme input[class^=ag-]:not([type]), .ag-theme-balham-custome-theme input[class^=ag-][type=date], .ag-theme-balham-custome-theme input[class^=ag-][type=datetime-local], .ag-theme-balham-custome-theme input[class^=ag-][type=number], .ag-theme-balham-custome-theme input[class^=ag-][type=tel], .ag-theme-balham-custome-theme input[class^=ag-][type=text], .ag-theme-balham-custome-theme textarea[class^=ag-]{
+  height: 20px;
+  padding: 0px;
+  border-radius:2px;
+  border: 1px solid #9fb1bd!important;
+}
+.ag-theme-balham-custome-theme .ag-side-buttons{
+  width: 32px;
+}
+::selection {
+  background: #dcdcdc;
+  color: #1C2B36;
+  text-shadow: none;
+}
