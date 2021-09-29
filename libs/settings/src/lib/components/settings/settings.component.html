@@ -1,0 +1,58 @@
+<div fxLayout="column">
+  <div
+    fxLayout="row"
+    fxLayoutGap="20"
+    fxLayoutAlign="space-around stretch"
+    fxLayout.xs="column"
+    fxLayoutAlign.xs="center center"
+  >
+    <div fxFlex="48" fxLayoutAlign="center center">
+      <h2>Change Brand</h2>
+      <div class="icon-form-field">
+        <mat-icon color="accent">
+          <fa-icon icon="language" color="accent"></fa-icon>
+        </mat-icon>
+        <mat-form-field>
+          <mat-select
+            aria-label="brand selection"
+            [placeholder]="'Brand'"
+            [(value)]="brand"
+            (selectionChange)="onBrandSelect($event)"
+            name="brand"
+          >
+            <ng-container *ngFor="let currentBrand of brands">
+              <!-- ngFor hack of missing ngLet of Angular -->
+              <mat-option [value]="currentBrand" [title]="currentBrand">
+                {{ currentBrand }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider fxHide.xs [vertical]="true"></mat-divider>
+    <div fxFlex="48" fxLayoutAlign="center center">
+      <h2>Change Theme</h2>
+      <div class="icon-form-field">
+        <mat-icon color="accent">
+          <fa-icon icon="language" color="accent"></fa-icon>
+        </mat-icon>
+        <mat-form-field>
+          <mat-select
+            aria-label="brand selection"
+            [placeholder]="'Theme'"
+            [(value)]="theme"
+            (selectionChange)="onThemeSelect($event)"
+            name="theme"
+          >
+            <ng-container *ngFor="let currentTheme of themes">
+              <mat-option [value]="currentTheme" [title]="currentTheme">
+                {{ currentTheme }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
